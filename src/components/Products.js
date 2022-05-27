@@ -1,5 +1,4 @@
-import { useState, useContext } from "react";
-import { data } from "../data.js";
+import { useContext } from "react";
 import { ProductContext } from "../context";
 import ProductElement from "./ProductElement";
 import Modal from "./Modal";
