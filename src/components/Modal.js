@@ -3,8 +3,8 @@ import { useContext } from "react";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 
 const Modal = () => {
-	const { handleModal, modalProduct } = useContext(ProductContext);
-	const { id, title, img, price, handleCart } = modalProduct;
+	const { handleModal, modalProduct, handleCart } = useContext(ProductContext);
+	const { id, title, img, price } = modalProduct;
 
 	return(
 		<div className="fixed top-0 left-0 right-0 bottom-0 bg-sky-900/30 flex justify-center items-center">

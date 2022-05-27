@@ -8,7 +8,6 @@ export function ProductContextProvider(props) {
 	const [modal, setModal] = useState(false);
 	const [modalProduct, setModalProduct] = useState([]);
 	const [cart, setCart] = useState([]);
-	const [quantity, setQuantity] = useState(1);
 	
 	function handleModal(id=null) {
 		setModal(!modal);
@@ -28,6 +27,7 @@ export function ProductContextProvider(props) {
 	    }
 
 		setCart([...cart, product]);
+		alert("Product is added in your shopping cart!")
 	}
 
 	function removeFromCart(id) {
@@ -35,7 +35,35 @@ export function ProductContextProvider(props) {
 		setCart(updatedCart);
 	}
 
-	const value = { products, modal, modalProduct, cart, quantity, setQuantity, handleModal, handleCart, removeFromCart }
+	function incQuantity(id) {
+		const updatedProducts = products.map(product => {
+			if(product.id === id){
+				product.quantity += 1;
+			}
+			return product;
+		})
+		setProducts(updatedProducts);
+	}
+
+	function decQuantity(id) {
+		const updatedProducts = products.map(product => {
+			if(product.id === id){
+				product.quantity -= 1;
+			}
+			return product;
+		})
+		setProducts(updatedProducts);
+	}
+
+	function calculateCartTotal(){
+		let res = 0;
+		cart.forEach((product) => {
+			res += product.price * product.quantity; 
+		})
+		return res;
+	}
+
+	const value = { products, modal, modalProduct, cart, handleModal, handleCart, removeFromCart, incQuantity, decQuantity, calculateCartTotal }
 
 	return(
 		<ProductContext.Provider value={value}>
