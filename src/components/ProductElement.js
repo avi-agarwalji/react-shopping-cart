@@ -3,7 +3,7 @@ import { ProductContext } from "../context";
 
 const ProductElement = ({ product }) => {
 	const { id, title, img, price } = product;
-	const { handleModal, handleCart } = useContext(ProductContext);
+	const { handleModal, addToCart } = useContext(ProductContext);
 
 	return(
 		<div className="w-full mx-auto h-80 sm:h-96 bg-white px-4 py-2 shadow shadow-sky-200 flex flex-col justify-around group rounded-xl">
@@ -19,7 +19,7 @@ const ProductElement = ({ product }) => {
 					<span className="text-sky-900">{price} Rs</span>
 				</div>
 				<button
-					onClick={() => handleCart(id)} 
+					onClick={() => addToCart(product)} 
 					className="bg-sky-900 text-white px-4 py-1 rounded-lg hover:bg-white hover:border hover:border-sky-900 hover:text-sky-900 duration-200"
 					>
 					Add To Cart

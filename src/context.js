@@ -1,10 +1,9 @@
 import { useState, createContext } from "react";
-import { data } from "./data.js";
+import { products } from "./data.js";
 
 export const ProductContext = createContext();
 
-export function ProductContextProvider(props) {
-	const [products, setProducts] = useState(data);
+function ProductContextProvider(props) {
 	const [modal, setModal] = useState(false);
 	const [modalProduct, setModalProduct] = useState([]);
 	const [cart, setCart] = useState([]);
@@ -12,58 +11,37 @@ export function ProductContextProvider(props) {
 	function handleModal(id=null) {
 		setModal(!modal);
 		if(id) {
-			const product = products.filter(product => product.id === id)[0]
+			const product = products.find(product => product.id === id)
 			setModalProduct(product);
 		}
 	}
 
-	function handleCart(id) {
-		const product = products.filter(product => product.id === id)[0]
+	function addToCart(product) {
+		const inCart = cart.find(cartItem => cartItem.id === product.id)
 
-	    for (let i = 0; i < cart.length; i++) {
-	        if (cart[i] === product) {
-	            return alert("Item is already present in your shopping cart! ");
-	        }
-	    }
-
-		setCart([...cart, product]);
-		alert("Product is added in your shopping cart!")
+		if(inCart){
+			setCart(cart.map( cartItem => cartItem.id === product.id ? {...inCart, quantity: inCart.quantity + 1} : cartItem ))
+		} else {
+			setCart([...cart, {...product, quantity: 1} ]);
+		}
 	}
 
-	function removeFromCart(id) {
-		const updatedCart = cart.filter(product => product.id !== id)
-		setCart(updatedCart);
-	}
+	function deleteFromCart(product) {
+		const inCart = cart.find(cartItem => cartItem.id === product.id)
 
-	function incQuantity(id) {
-		const updatedProducts = products.map(product => {
-			if(product.id === id){
-				product.quantity += 1;
-			}
-			return product;
-		})
-		setProducts(updatedProducts);
-	}
-
-	function decQuantity(id) {
-		const updatedProducts = products.map(product => {
-			if(product.id === id){
-				product.quantity -= 1;
-			}
-			return product;
-		})
-		setProducts(updatedProducts);
+		if(inCart.quantity === 1){
+			setCart(cart.filter( cartItem => cartItem.id !== product.id ))
+		} else {
+			setCart(cart.map( cartItem => cartItem.id === product.id ? {...inCart, quantity: inCart.quantity-1} : cartItem  ))
+		}
 	}
 
 	function calculateCartTotal(){
-		let res = 0;
-		cart.forEach((product) => {
-			res += product.price * product.quantity; 
-		})
-		return res;
+		const total = cart.reduce((acc, curr) => acc + curr.price * curr.quantity, 0);
+		return total;
 	}
 
-	const value = { products, modal, modalProduct, cart, handleModal, handleCart, removeFromCart, incQuantity, decQuantity, calculateCartTotal }
+	const value = { products, modal, modalProduct, cart, handleModal, addToCart, deleteFromCart, calculateCartTotal }
 
 	return(
 		<ProductContext.Provider value={value}>
@@ -71,3 +49,5 @@ export function ProductContextProvider(props) {
 		</ProductContext.Provider>
 	);
 }
+
+export default ProductContextProvider;
