@@ -12,7 +12,9 @@ const Header = () => {
 			<nav className="max-w-5xl mx-auto flex justify-between items-center px-2 md:px-8 py-4">
 				{/* Nav item - Logo */}
 				<div className="space-x-6 md:space-x-20">
-					<span className="text-white text-xl md:text-4xl font-bold tracking-widest cursor-pointer">Store</span> 
+					<Link to="/">
+						<span className="text-white text-xl md:text-4xl font-bold tracking-widest cursor-pointer">Store</span> 
+					</Link>
 				</div>
 				{/* Nav item - Links */}
 				<div className="text-white flex space-x-2 md:space-x-20 items-center">

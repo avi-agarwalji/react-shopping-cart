@@ -14,8 +14,8 @@ function Cart() {
 
 	return(
 		<section className="max-w-7xl mx-auto p-10">
-		 	<h1 className="text-sky-900 text-2xl font-semibold tracking-wider mb-2"> Your Shopping Cart -> </h1>
-		 	<h2 className="text-sky-800 text-xl p-1 mb-6">Total Payable Amount: {calculateCartTotal()} Rs</h2>
+		 	<h1 className="text-sky-900 text-lg sm:text-2xl font-semibold tracking-wider mb-2"> Your Shopping Cart -> </h1>
+		 	<h2 className="text-sky-800 sm:text-xl p-1 mb-6">Total Payable Amount: {calculateCartTotal()} Rs</h2>
 			<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 place-items-center">
 				{ cart.map((product) => (
 					<div key={product.id} className="w-full mx-auto sm:h-96 bg-white px-4 py-2 shadow shadow-sky-200 flex flex-col justify-around space-y-2 group rounded-xl">
@@ -25,7 +25,7 @@ function Cart() {
 							</div>
 							<h2 className="text-sky-900 font-semibold hover:underline underline-offset-2">{product.title}</h2>
 						</div>
-						<div className="flex justify-between items-center">
+						<div className="flex justify-between space-x-2 items-center">
 							<div>
 								<span className="font-semibold">Price: </span>
 								<span className="text-sky-900">
