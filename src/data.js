@@ -1,4 +1,4 @@
-export const products = [
+export const data = [
 	{
 		id: 1,
 		title: "Logitech h800 wireless headset with microphone",

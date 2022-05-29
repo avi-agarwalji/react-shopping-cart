@@ -17,15 +17,15 @@ function Cart() {
 
 	return(
 		<section className="max-w-5xl min-h-screen mx-auto p-10">
-		 	<h1 className="text-sky-900 text-lg sm:text-2xl font-semibold tracking-wider mb-2"> Your Shopping Cart -> </h1>
+		 	<h1 className="text-sky-900 text-lg sm:text-2xl font-semibold underline mb-2"> Your Shopping Cart: </h1>
 		 	<div>
 				<div className="grid grid-cols-1 sm:grid-cols-2 gap-4 place-items-center">
 					{ cart.map((product) => (
-						<div key={product.id} className="w-full h-52 flex items-center bg-white px-1 md:px-4 py-2 shadow shadow-sky-200 group rounded-xl">
-							<div className="flex w-full justify-between space-x-4 sm:space-x-16">
-								<img className="h-full w-2/6 object-cover group-hover:scale-125 duration-100 ease-in-out overflow-hidden" src={product.img} alt="" />				
+						<div key={product.id} className="w-full h-52 flex items-center bg-white px-1 md:px-4 py-2 shadow shadow-sky-200  rounded-xl">
+							<div className="flex w-full justify-between space-x-4 sm:space-x-16 overflow-hidden">
+								<img className="h-full w-2/6 object-cover hover:scale-125 duration-100 ease-in-out overflow-hidden" src={product.img} alt="" />				
 								<div className="w-4/6 px-1">
-									<h2 className="text-sky-900 text-xs sm:text-base hover:underline underline-offset-2">{product.title}</h2>
+									<h2 className="text-sky-900 text-xs sm:text-base">{product.title}</h2>
 									<span className="text-xs sm:text-base font-semibold">Price: </span>
 									<span className="text-xs sm:text-base text-sky-900">
 										Rs {product.price} x {product.quantity}
@@ -51,7 +51,7 @@ function Cart() {
 						</div>
 					)) }
 				</div>
-				<div className="max-w-md mt-6 bg-white p-4 mb-8">
+				<div className="max-w-md mt-6 bg-white p-4 mb-8 rounded shadow">
 					<div className="text-sm text-sky-700 p-2 space-y-1 border-b-2 border-sky-500">
 			 			<h2 className="text-sky-800 sm:text-xl font-semibold mb-4  underline">Total Payable Amount:</h2>
 						<h4 className="flex justify-between mx-10">Products Price: <span>{total} Rs</span></h4>

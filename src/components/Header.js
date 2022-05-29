@@ -18,11 +18,11 @@ const Header = () => {
 				</div>
 				{/* Nav item - Links */}
 				<div className="text-white flex space-x-2 md:space-x-20 items-center">
-					{/* Nav item link - 1 */}
+					{/* Nav item link - Products */}
 					<Link to="/">
 						<h2 className="hover:text-sky-200 text-white md:text-xl -mb-1 cursor-pointer">Products</h2>
 					</Link>
-					{/* Nav item link - 2 */}
+					{/* Nav item link - Cart */}
 					<Link to="/cart">
 						<div className="relative hover:text-sky-200 text-white md:text-xl -mb-1 cursor-pointer flex items-center space-x-2 px-2">
 							<span className="hidden md:block">
@@ -32,7 +32,7 @@ const Header = () => {
 							<span className="absolute -top-3 -right-2 bg-red-400 py-[2.5px] px-[6px] rounded-[50%] text-sm text-white">{cart.length}</span>
 						</div>
 					</Link>
-					{/* Nav item link - 3 */}
+					{/* Nav item link - More */}
 					<div className="hover:text-sky-200 text-white md:text-xl -mb-1 cursor-pointer flex items-center space-x-2 group">
 						<span className="hidden md:block">
 							More
