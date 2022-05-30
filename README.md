@@ -14,7 +14,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 ### Key Features
 1. **Tailwindcss**  used for styling.
 2. App includes *Modals* to display fully detailed products.
-3. Uses ==Context API== for managing state.
+3. Uses **Context API** for managing state.
 4. **Add To cart** Feature implemented.
 5. Minimal React routing using *react-router-dom*.
 6. Two filters added, Sorting products acc. to price:- 
